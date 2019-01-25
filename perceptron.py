@@ -8,13 +8,23 @@ def main():
   weights0 = np.random.rand(1, 8)
   weights1 = np.random.rand(1, 8)
   weights2 = np.random.rand(1, 8)
-  weights = [weights0, weights1, weights2]
-  weights = train(weights, data)
+  initialWeights = [weights0, weights1, weights2]
+  finalWeights, totalIterations = train(initialWeights, data)
 
   # Verify accuracy on test set
   testData = np.genfromtxt('testSeeds.csv', delimiter=',')
   testData = np.insert(testData, 0, 1, axis=1)
-  test(weights, testData)
+  accuracy, precisionAndRecallArray = test(finalWeights, testData)
+  print(accuracy)
+  outputResults(str(initialWeights), str(finalWeights), str(totalIterations), str(precisionAndRecallArray))
+
+def outputResults(initialWeights, finalWeights, totalIterations, precisionAndRecallArray):
+  text_file = open('output.txt', 'w')
+  text_file.write('Initial weights: ' + initialWeights)
+  text_file.write('Final weights: ' + finalWeights)
+  text_file.write('Total iterations: ' + totalIterations)
+  text_file.write('Precision and Recall: ' + precisionAndRecallArray)
+  text_file.close()
 
 def activate(totalActivation, threshold):
   if (totalActivation >= threshold):
@@ -24,14 +34,12 @@ def activate(totalActivation, threshold):
 
 def predict(weight, inputData):
   threshold = weight[0]
-  totalActivation = np.sum(np.dot(weight,inputData))
-  #print('threshold ', threshold)
- # print('totalAct ', totalActivation)
+  totalActivation = np.sum(np.dot(weight, inputData))
   return activate(totalActivation, threshold)
 
 def weightTrainer(weight, inputData, classLabel, targetLabel):
   result = predict(weight, inputData)
-  learningRate = 0.1
+  learningRate = 0.01
   # If result == 1 and classLabel == targetLabel -> good, don't update
   # If result != 1 and classLabel == targetLabel -> update weights positively
   # If result == 1 and classLabel != targetLabel -> update weights negatively
@@ -48,22 +56,31 @@ def train(weights, data):
   # and all but the last item in the second dimension (columns))
   inputData = data[0:, 0:-1]
   classLabels = data[0:, -1:]
+  totalIterations = 0
   counter = 0
+  currentAccuracy = 0
+  currentBestAccuracy = 0
+  finalWeights = None
+  # While accuracy has not improved after 100000 iterations
   while(counter < 100000):
+    # Using map which takes in arrays of the same shape (hense np.full) and applies the weightTrainer function to each row
+    # This trains each neuron to try and be predictive of its class (1, 2, or 3)
     weights0 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[0]), inputData, classLabels, np.full((data.shape[0], 1), 1)))), 0)
     weights1 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[1]), inputData, classLabels, np.full((data.shape[0], 1), 2)))), 0)
     weights2 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[2]), inputData, classLabels, np.full((data.shape[0], 1), 3)))), 0)
     weights = [weights0, weights1, weights2]
+    currentAccuracy, precisionAndRecallArray = test(weights, data)
+    # If a set of weights with a better accuracy on the training data is found...
+    if (currentAccuracy > currentBestAccuracy):
+      currentBestAccuracy = currentAccuracy
+      finalWeights = weights
+      counter = 0
     counter += 1
-  return weights
+    totalIterations += 1
+  return finalWeights, totalIterations
 
 def predictionDecider(class1, class2, class3):
-  # According to data distribution shown in instruction
-    # Kama is distributed between Rosa and Canadian where
-    # Kama = class1, Rosa = class2, Canadian = class3
-  # Since kama is between Rosa and Canadian, any time Kama
-  # and one of the others is predicted, predict the other.
-  
+  # Obviously showing a bias for predicting class 1 followed by class 2 and 3
   if (class1 == 1):
     return 1
   if (class2 == 1):
@@ -71,38 +88,69 @@ def predictionDecider(class1, class2, class3):
   if (class3 == 1):
     return 3
   return 1
-  
-  '''
-  if (class1 == 1 and class2 == 1):
-    return 2
-  if (class1 == 1 and class3 == 1):
-    return 3
-  if (class2 == 1):
-    return 2
-  if (class3 == 1):
-    return 3
-  return 1
-  '''
 
-def checkAccuracy(prediction, classLabels):
-  if (prediction == classLabels):
+def getTotalTruePositives(prediction, classLabel):
+  if (prediction == classLabel):
+    return 1
+  else:
+    return 0
+
+def getTruePositives(prediction, classLabel, targetClass):
+  if (targetClass == classLabel and prediction == 1):
+    return 1
+  else:
+    return 0
+
+def getFalsePositives(prediction, classLabel, targetClass):
+  if (targetClass != classLabel and prediction == 1):
+    return 1
+  else:
+    return 0
+
+def getFalseNegatives(prediction, classLabel, targetClass):
+  if (targetClass == classLabel and prediction == 0):
     return 1
   else:
     return 0
 
 def test(weights, data):
   inputData = data[0:, 0:-1]
-  classLabels = data[0:, -1:]
+  classLabels = data[0:, -1:].flatten()
   class1 = np.array(list(map(predict, np.full((data.shape[0], 8), weights[0]), inputData)))
   class2 = np.array(list(map(predict, np.full((data.shape[0], 8), weights[1]), inputData)))
   class3 = np.array(list(map(predict, np.full((data.shape[0], 8), weights[2]), inputData)))
 
-  truePositivesMatrix = checkAccuracy(predictionDecider(class1, class2, class3), classLabels.flatten())
-  accuracy = np.sum(truePositivesMatrix) / truePositivesMatrix.shape[0]
-  print(accuracy)
+  truePositivesC1 = np.sum(getTruePositives(class1, classLabels, np.full(data.shape[0], 1)))
+  truePositivesC2 = np.sum(getTruePositives(class2, classLabels, np.full(data.shape[0], 2)))
+  truePositivesC3 = np.sum(getTruePositives(class3, classLabels, np.full(data.shape[0], 3)))
 
+  falsePositivesC1 = np.sum(getFalsePositives(class1, classLabels, np.full(data.shape[0], 1)))
+  falsePositivesC2 = np.sum(getFalsePositives(class2, classLabels, np.full(data.shape[0], 2)))
+  falsePositivesC3 = np.sum(getFalsePositives(class3, classLabels, np.full(data.shape[0], 3)))
 
-checkAccuracy = np.vectorize(checkAccuracy)
+  falseNegativesC1 = np.sum(getFalseNegatives(class1, classLabels, np.full(data.shape[0], 1)))
+  falseNegativesC2 = np.sum(getFalseNegatives(class1, classLabels, np.full(data.shape[0], 2)))
+  falseNegativesC3 = np.sum(getFalseNegatives(class1, classLabels, np.full(data.shape[0], 3)))
+
+  class1Precision = truePositivesC1 / (truePositivesC1 + falsePositivesC1)
+  class2Precision = truePositivesC2 / (truePositivesC2 + falsePositivesC2)
+  class3Precision = truePositivesC3 / (truePositivesC3 + falsePositivesC3)
+
+  class1Recall = truePositivesC1 / (truePositivesC1 + falseNegativesC1)
+  class2Recall = truePositivesC2 / (truePositivesC2 + falseNegativesC2)
+  class3Recall = truePositivesC3 / (truePositivesC3 + falseNegativesC3)
+
+  precisionAndRecallArray = [[class1Precision, class1Recall], [class2Precision, class2Recall], [class3Precision, class3Recall]]
+
+  totalTruePositivesMatrix = getTotalTruePositives(predictionDecider(class1, class2, class3), classLabels)
+  accuracy = np.sum(totalTruePositivesMatrix) / totalTruePositivesMatrix.shape[0]
+  return accuracy, precisionAndRecallArray
+
+# Vectorizing these two functions (essentially creates a for loop)
+getTruePositives = np.vectorize(getTruePositives)
+getFalsePositives = np.vectorize(getFalsePositives)
+getFalseNegatives = np.vectorize(getFalseNegatives)
+getTotalTruePositives = np.vectorize(getTotalTruePositives)
 predictionDecider = np.vectorize(predictionDecider)
 main()
 # Data format is
