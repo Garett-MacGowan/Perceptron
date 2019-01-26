@@ -16,14 +16,19 @@ def main():
   testData = np.insert(testData, 0, 1, axis=1)
   accuracy, precisionAndRecallArray = test(finalWeights, testData)
   print(accuracy)
-  outputResults(str(initialWeights), str(finalWeights), str(totalIterations), str(precisionAndRecallArray))
+  outputResults(initialWeights, finalWeights, totalIterations, precisionAndRecallArray)
 
 def outputResults(initialWeights, finalWeights, totalIterations, precisionAndRecallArray):
   text_file = open('output.txt', 'w')
-  text_file.write('Initial weights: ' + initialWeights)
-  text_file.write('Final weights: ' + finalWeights)
-  text_file.write('Total iterations: ' + totalIterations)
-  text_file.write('Precision and Recall: ' + precisionAndRecallArray)
+  text_file.write('Initial weights: \n')
+  for iw in list(initialWeights):
+    text_file.write(str(iw) + '\n')
+  text_file.write('Final weights: \n')
+  for fw in list(finalWeights):
+    text_file.write(str(fw) + '\n')
+  text_file.write('Total iterations: \n' + str(totalIterations) + '\n')
+  for i in range(0,3):
+    text_file.write('Class ' + str(i+1) + ', Precision: ' + str(precisionAndRecallArray[i][0]) + ' Recall: ' + str(precisionAndRecallArray[i][1]) + '\n')
   text_file.close()
 
 def activate(totalActivation, threshold):
@@ -39,7 +44,7 @@ def predict(weight, inputData):
 
 def weightTrainer(weight, inputData, classLabel, targetLabel):
   result = predict(weight, inputData)
-  learningRate = 0.01
+  learningRate = 0.1
   # If result == 1 and classLabel == targetLabel -> good, don't update
   # If result != 1 and classLabel == targetLabel -> update weights positively
   # If result == 1 and classLabel != targetLabel -> update weights negatively
@@ -61,8 +66,8 @@ def train(weights, data):
   currentAccuracy = 0
   currentBestAccuracy = 0
   finalWeights = None
-  # While accuracy has not improved after 100000 iterations
-  while(counter < 100000):
+  # While accuracy has not improved after 10000 iterations
+  while(counter < 10000):
     # Using map which takes in arrays of the same shape (hense np.full) and applies the weightTrainer function to each row
     # This trains each neuron to try and be predictive of its class (1, 2, or 3)
     weights0 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[0]), inputData, classLabels, np.full((data.shape[0], 1), 1)))), 0)
