@@ -9,6 +9,7 @@ def main():
   weights1 = np.random.rand(1, 8)
   weights2 = np.random.rand(1, 8)
   initialWeights = [weights0, weights1, weights2]
+  # Train the model
   finalWeights, totalIterations = train(initialWeights, data)
 
   # Verify accuracy on test set
