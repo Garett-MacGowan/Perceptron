@@ -68,8 +68,12 @@ def train(weights, data):
   finalWeights = None
   # While accuracy has not improved after 10000 iterations
   while(counter < 10000):
-    # Using map which takes in arrays of the same shape (hense np.full) and applies the weightTrainer function to each row
-    # This trains each neuron to try and be predictive of its class (1, 2, or 3)
+    '''
+    Using map which takes in arrays of the same shape (hense np.full) and applies the weightTrainer function to each row
+    This trains each neuron to try and be predictive of its class (1, 2, or 3)
+    A new weight is generated for each data point and all the weights are averaged together to get the new weight.
+    This is instead of updating the weight after each data point and may help to reduce output toggling
+    '''
     weights0 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[0]), inputData, classLabels, np.full((data.shape[0], 1), 1)))), 0)
     weights1 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[1]), inputData, classLabels, np.full((data.shape[0], 1), 2)))), 0)
     weights2 = np.mean(np.array(list(map(weightTrainer, np.full((data.shape[0], 8), weights[2]), inputData, classLabels, np.full((data.shape[0], 1), 3)))), 0)
@@ -157,13 +161,5 @@ getFalsePositives = np.vectorize(getFalsePositives)
 getFalseNegatives = np.vectorize(getFalseNegatives)
 getTotalTruePositives = np.vectorize(getTotalTruePositives)
 predictionDecider = np.vectorize(predictionDecider)
+
 main()
-# Data format is
-#   [area,
-#   perimeter,
-#   compactness,
-#   length,
-#   width,
-#   asymmetry coefficient,
-#   length of kernel,
-#   class]
