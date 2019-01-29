@@ -1,0 +1,100 @@
+
+{
+    "version":"3.6.1.v201809030900",
+    "created":"2019-01-28 13:57",
+    "nodestats":{
+        "nodes":[
+            {
+                "id":"org.knime.base.node.io.csvreader.CSVReaderNodeFactory#CSV Reader",
+                "nrexecs":2,
+                "nrfails":0,
+                "exectime":78,
+                "nrcreated":2,
+                "successor":"org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory#Number To String"
+            },
+            {
+                "id":"org.knime.base.node.mine.neural.rprop.RPropNodeFactory2#RProp MLP Learner",
+                "nrexecs":4,
+                "nrfails":0,
+                "exectime":679,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor"
+            },
+            {
+                "id":"org.knime.base.node.preproc.colconvert.numbertocategory.NumberToCategoryApplyNodeFactory#Number To Category (Apply)",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory#Number To String",
+                "nrexecs":3,
+                "nrfails":0,
+                "exectime":11,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor"
+            },
+            {
+                "id":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":195,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer"
+            },
+            {
+                "id":"com.knime.reporting.nodes.dataset.ReportingDataSetNodeFactory#Data to Report",
+                "nrexecs":2,
+                "nrfails":0,
+                "exectime":2,
+                "nrcreated":2,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer",
+                "nrexecs":4,
+                "nrfails":0,
+                "exectime":171,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.base.node.preproc.filter.row.RowFilterNodeFactory#Row Filter",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.mine.neural.rprop.RPropNodeFactory2#RProp MLP Learner"
+            },
+            {
+                "id":"org.knime.base.node.preproc.columntrans2.One2ManyCol2NodeFactory#One to Many",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":2,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory#Column Filter"
+            },
+            {
+                "id":"org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory#Column Filter",
+                "nrexecs":3,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":1,
+                "successor":"org.knime.base.node.mine.neural.rprop.RPropNodeFactory2#RProp MLP Learner"
+            }
+        ],
+        "metaNodes":{
+        },
+        "wrappedNodes":{
+        }
+    },
+    "uptime":35461989,
+    "workflowsOpened":0,
+    "remoteWorkflowsOpened":0,
+    "launches":1,
+    "timeSinceLastStart":35461989,
+    "crashes":0,
+    "properlyShutDown":false
+}
