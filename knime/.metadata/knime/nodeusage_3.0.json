@@ -10,13 +10,13 @@
                 "nrfails":0,
                 "exectime":78,
                 "nrcreated":2,
-                "successor":"org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory#Number To String"
+                "successor":"org.knime.ext.weka37.classifier.WekaClassifierNodeFactory#VotedPerceptron (3.7)"
             },
             {
                 "id":"org.knime.base.node.mine.neural.rprop.RPropNodeFactory2#RProp MLP Learner",
-                "nrexecs":4,
+                "nrexecs":10,
                 "nrfails":0,
-                "exectime":679,
+                "exectime":866,
                 "nrcreated":1,
                 "successor":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor"
             },
@@ -30,33 +30,33 @@
             },
             {
                 "id":"org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory#Number To String",
-                "nrexecs":3,
+                "nrexecs":8,
                 "nrfails":0,
-                "exectime":11,
-                "nrcreated":1,
-                "successor":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor"
+                "exectime":16,
+                "nrcreated":2,
+                "successor":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)"
             },
             {
                 "id":"org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory#MultiLayerPerceptron Predictor",
-                "nrexecs":1,
+                "nrexecs":11,
                 "nrfails":0,
-                "exectime":195,
+                "exectime":302,
                 "nrcreated":1,
                 "successor":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer"
             },
             {
                 "id":"com.knime.reporting.nodes.dataset.ReportingDataSetNodeFactory#Data to Report",
-                "nrexecs":2,
+                "nrexecs":3,
                 "nrfails":0,
                 "exectime":2,
-                "nrcreated":2,
+                "nrcreated":3,
                 "successor":"n/a"
             },
             {
                 "id":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer",
-                "nrexecs":4,
+                "nrexecs":60,
                 "nrfails":0,
-                "exectime":171,
+                "exectime":367,
                 "nrcreated":1,
                 "successor":"n/a"
             },
@@ -70,19 +70,91 @@
             },
             {
                 "id":"org.knime.base.node.preproc.columntrans2.One2ManyCol2NodeFactory#One to Many",
-                "nrexecs":1,
+                "nrexecs":2,
                 "nrfails":0,
-                "exectime":2,
+                "exectime":3,
                 "nrcreated":1,
-                "successor":"org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory#Column Filter"
+                "successor":"org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory#Number To String"
             },
             {
                 "id":"org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory#Column Filter",
-                "nrexecs":3,
+                "nrexecs":16,
+                "nrfails":0,
+                "exectime":3,
+                "nrcreated":1,
+                "successor":"org.knime.ext.weka37.classifier.WekaClassifierNodeFactory#VotedPerceptron (3.7)"
+            },
+            {
+                "id":"org.knime.base.node.preproc.colconvert.stringtonumber.StringToNumberNodeFactory#String To Number",
+                "nrexecs":0,
+                "nrfails":0,
+                "exectime":0,
+                "nrcreated":2,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.ext.weka37.classifier.WekaClassifierNodeFactory#VotedPerceptron (3.7)",
+                "nrexecs":7,
+                "nrfails":0,
+                "exectime":238915,
+                "nrcreated":3,
+                "successor":"org.knime.ext.weka37.predictor3.WekaPredictorNodeFactory#Weka Predictor (3.7)"
+            },
+            {
+                "id":"org.knime.ext.weka37.predictor3.WekaPredictorNodeFactory#Weka Predictor (3.7)",
+                "nrexecs":7,
+                "nrfails":0,
+                "exectime":408,
+                "nrcreated":3,
+                "successor":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.layer.mlp.dense.DenseLayerNodeFactory#Dense Layer",
+                "nrexecs":23,
+                "nrfails":0,
+                "exectime":863,
+                "nrcreated":1,
+                "successor":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.layer.init.DL4JModelInitNodeFactory#DL4J Model Initializer",
+                "nrexecs":8,
+                "nrfails":0,
+                "exectime":13,
+                "nrcreated":1,
+                "successor":"org.knime.ext.dl4j.base.nodes.layer.mlp.dense.DenseLayerNodeFactory#Dense Layer"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)",
+                "nrexecs":37,
+                "nrfails":5,
+                "exectime":1724619,
+                "nrcreated":1,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.predict.feedforward.classification.FeedforwardClassificationPredictorNodeFactory#DL4J Feedforward Predictor (Classification)",
+                "nrexecs":38,
+                "nrfails":0,
+                "exectime":11058,
+                "nrcreated":0,
+                "successor":"n/a"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.learn.feedforward.regression.FeedforwardRegressionLearnerNodeFactory#DL4J Feedforward Learner (Regression)",
+                "nrexecs":0,
                 "nrfails":0,
                 "exectime":0,
                 "nrcreated":1,
-                "successor":"org.knime.base.node.mine.neural.rprop.RPropNodeFactory2#RProp MLP Learner"
+                "successor":"org.knime.ext.dl4j.base.nodes.predict.feedforward.classification.FeedforwardClassificationPredictorNodeFactory#DL4J Feedforward Predictor (Classification)"
+            },
+            {
+                "id":"org.knime.ext.dl4j.base.nodes.predict.feedforward.layer.FeedforwardLayerPredictorNodeFactory#DL4J Feedforward Predictor (Layer)",
+                "nrexecs":1,
+                "nrfails":0,
+                "exectime":747,
+                "nrcreated":1,
+                "successor":"n/a"
             }
         ],
         "metaNodes":{
@@ -90,11 +162,11 @@
         "wrappedNodes":{
         }
     },
-    "uptime":35461989,
-    "workflowsOpened":0,
+    "uptime":6299314,
+    "workflowsOpened":2,
     "remoteWorkflowsOpened":0,
-    "launches":1,
-    "timeSinceLastStart":35461989,
-    "crashes":0,
-    "properlyShutDown":false
+    "launches":10,
+    "timeSinceLastStart":12929418,
+    "crashes":5,
+    "properlyShutDown":true
 }
