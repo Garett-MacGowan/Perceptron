@@ -10,7 +10,7 @@
 <entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
 </config>
-<entry key="number_of_outputs" type="xint" value="1"/>
+<entry key="number_of_outputs" type="xint" value="3"/>
 <config key="learning_rate_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_double"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
@@ -20,12 +20,12 @@
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
 </config>
-<entry key="weight_init" type="xstring" value="DISTRIBUTION"/>
+<entry key="weight_init" type="xstring" value="XAVIER"/>
 <config key="activation_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
 </config>
-<entry key="activation" type="xstring" value="Identity"/>
+<entry key="activation" type="xstring" value="Sigmoid"/>
 </config>
 <config key="nodeAnnotation">
 <entry key="text" type="xstring" value=""/>
@@ -70,6 +70,6 @@
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="c70fe843-11c9-4847-838b-7b0d46589673"/>
+<entry key="file_store_id" type="xstring" value="157c9e7a-dfaf-456b-a617-29847fe4865e"/>
 </config>
 </config>

@@ -220,7 +220,7 @@
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
 </config>
-<entry key="weight_init" type="xstring" value="DISTRIBUTION"/>
+<entry key="weight_init" type="xstring" value="XAVIER"/>
 <config key="loss_function_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
@@ -306,6 +306,6 @@
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="976174d2-7adc-4e28-a442-99035258c650"/>
+<entry key="file_store_id" type="xstring" value="33550dad-bb35-4f4e-941d-2b0199b2c788"/>
 </config>
 </config>

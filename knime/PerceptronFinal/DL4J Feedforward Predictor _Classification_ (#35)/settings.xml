@@ -6,26 +6,26 @@
 <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
 </config>
 <config key="model">
-<config key="change_prediction_column_name_Internals">
-<entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
-<entry key="EnabledStatus" type="xboolean" value="true"/>
-</config>
-<entry key="change_prediction_column_name" type="xboolean" value="false"/>
 <config key="new_prediction_column_name_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="false"/>
 </config>
 <entry key="new_prediction_column_name" type="xstring" value="Prediction ()"/>
-<config key="append_probability_Internals">
+<config key="change_prediction_column_name_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
 <entry key="EnabledStatus" type="xboolean" value="true"/>
 </config>
-<entry key="append_probability" type="xboolean" value="false"/>
+<entry key="change_prediction_column_name" type="xboolean" value="false"/>
 <config key="probability_column_suffix_Internals">
 <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
 <entry key="EnabledStatus" type="xboolean" value="false"/>
 </config>
 <entry key="probability_column_suffix" type="xstring" value=""/>
+<config key="append_probability_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="append_probability" type="xboolean" value="false"/>
 </config>
 <config key="nodeAnnotation">
 <entry key="text" type="xstring" value=""/>
@@ -68,6 +68,6 @@
 </config>
 <config key="filestores">
 <entry key="file_store_location" type="xstring" isnull="true" value=""/>
-<entry key="file_store_id" type="xstring" value="22c4ea9e-fb15-4d3d-89cc-b0c5ef85e15f"/>
+<entry key="file_store_id" type="xstring" value="4d297b13-86f8-46d6-b239-a9aa22a1cdf0"/>
 </config>
 </config>

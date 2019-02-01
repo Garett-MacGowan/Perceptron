@@ -54,9 +54,9 @@
             },
             {
                 "id":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer",
-                "nrexecs":60,
+                "nrexecs":61,
                 "nrfails":0,
-                "exectime":367,
+                "exectime":371,
                 "nrcreated":1,
                 "successor":"n/a"
             },
@@ -110,33 +110,33 @@
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.layer.mlp.dense.DenseLayerNodeFactory#Dense Layer",
-                "nrexecs":23,
+                "nrexecs":25,
                 "nrfails":0,
-                "exectime":863,
+                "exectime":872,
                 "nrcreated":1,
                 "successor":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)"
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.layer.init.DL4JModelInitNodeFactory#DL4J Model Initializer",
-                "nrexecs":8,
+                "nrexecs":9,
                 "nrfails":0,
-                "exectime":13,
+                "exectime":15,
                 "nrcreated":1,
                 "successor":"org.knime.ext.dl4j.base.nodes.layer.mlp.dense.DenseLayerNodeFactory#Dense Layer"
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)",
-                "nrexecs":37,
+                "nrexecs":38,
                 "nrfails":5,
-                "exectime":1724619,
+                "exectime":1749016,
                 "nrcreated":1,
                 "successor":"n/a"
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.predict.feedforward.classification.FeedforwardClassificationPredictorNodeFactory#DL4J Feedforward Predictor (Classification)",
-                "nrexecs":38,
+                "nrexecs":39,
                 "nrfails":0,
-                "exectime":11058,
+                "exectime":11588,
                 "nrcreated":0,
                 "successor":"n/a"
             },
@@ -162,11 +162,11 @@
         "wrappedNodes":{
         }
     },
-    "uptime":6299314,
-    "workflowsOpened":2,
+    "uptime":6516987,
+    "workflowsOpened":3,
     "remoteWorkflowsOpened":0,
-    "launches":10,
-    "timeSinceLastStart":12929418,
-    "crashes":5,
-    "properlyShutDown":true
+    "launches":12,
+    "timeSinceLastStart":216712,
+    "crashes":6,
+    "properlyShutDown":false
 }

@@ -1,1 +1,2 @@
+D:\GitSpace\Perceptron\testSeeds.csv
 D:\GitSpace\Perceptron\trainSeeds.csv
