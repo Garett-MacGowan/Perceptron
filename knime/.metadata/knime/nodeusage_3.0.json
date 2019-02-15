@@ -54,9 +54,9 @@
             },
             {
                 "id":"org.knime.base.node.mine.scorer.accuracy.AccuracyScorerNodeFactory#Scorer",
-                "nrexecs":61,
+                "nrexecs":63,
                 "nrfails":0,
-                "exectime":371,
+                "exectime":375,
                 "nrcreated":1,
                 "successor":"n/a"
             },
@@ -126,17 +126,17 @@
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.learn.feedforward.classification.FeedforwardClassificationLearnerNodeFactory#DL4J Feedforward Learner (Classification)",
-                "nrexecs":38,
+                "nrexecs":40,
                 "nrfails":5,
-                "exectime":1749016,
+                "exectime":1795976,
                 "nrcreated":1,
                 "successor":"n/a"
             },
             {
                 "id":"org.knime.ext.dl4j.base.nodes.predict.feedforward.classification.FeedforwardClassificationPredictorNodeFactory#DL4J Feedforward Predictor (Classification)",
-                "nrexecs":39,
+                "nrexecs":41,
                 "nrfails":0,
-                "exectime":11588,
+                "exectime":12104,
                 "nrcreated":0,
                 "successor":"n/a"
             },
@@ -162,11 +162,11 @@
         "wrappedNodes":{
         }
     },
-    "uptime":6516987,
+    "uptime":6530798,
     "workflowsOpened":3,
     "remoteWorkflowsOpened":0,
     "launches":12,
-    "timeSinceLastStart":216712,
+    "timeSinceLastStart":382442,
     "crashes":6,
-    "properlyShutDown":false
+    "properlyShutDown":true
 }
